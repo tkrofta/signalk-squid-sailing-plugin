@@ -9,10 +9,10 @@
             "type": "node",
             "request": "attach",
             "name": "Attach to DevPi",
-            "address": "192.168.0.97",
+            "address": "192.168.0.98",
             "port": 9229,
             "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/home/pi/src/signalk-openweather-plugin"
+            "remoteRoot": "/home/pi/src/signalk-squid-sailing-plugin"
         }
     ]
 }
