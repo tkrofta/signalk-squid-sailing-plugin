@@ -1,15 +1,15 @@
 {
-  "name": "openweather-signalk",
-  "version": "0.6.0",
-  "description": "SignalK plugin to provide data from OpenWeather Service",
+  "name": "squid-sailing-signalk",
+  "version": "0.1.0",
+  "description": "SignalK plugin to provide data from SquidSailing Service",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "node --inspect-brk=192.168.0.97:9229 /usr/local/lib/node_modules/signalk-server/bin/signalk-server"
+    "debug": "node --inspect-brk=192.168.0.98:9229 /usr/lib/node_modules/signalk-server/bin/signalk-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inspired-technologies/signalk-openweather-plugin.git"
+    "url": "git+https://github.com/tkrofta/signalk-squid-sailing-plugin"
   },
   "keywords": [
     "signalk",
@@ -19,11 +19,11 @@
   "author": "Inspired Technologies",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/inspired-technologies/signalk-openweather-plugin/issues"
+    "url": "https://github.com/tkrofta/signalk-squid-sailing-plugin/issues"
   },
-  "homepage": "https://github.com/inspired-technologies/signalk-openweather-plugin#readme",
+  "homepage": "https://github.com/tkrofta/signalk-squid-sailing-plugin#readme",
   "dependencies": {
-    "debug": "^4.3.1",
-    "openweather-apis": "^4.4.1"
+    "axios": "^0.21.1",
+    "debug": "^4.3.1"
   }
 }
