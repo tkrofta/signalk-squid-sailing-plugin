@@ -185,8 +185,8 @@ function toTarget(skunit, value, target, precision) {
     } else {
         unit = skunit
     }
-    if (target!=='geoJson' && typeof precision==='number')
-        value = value.toFixed(precision)
+    if (target!=='geoJson' && target!=='latLng' && typeof precision==='number')
+        value = parseFloat(value.toFixed(precision))
     return { value: value, units: unit }
 }
 

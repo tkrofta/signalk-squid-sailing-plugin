@@ -24,10 +24,11 @@ module.exports = function (app) {
     plugin.description = 'Provide selected data from the SquidSailing Forecast Service';
 
     var unsubscribes = [];
+    let timerId = null;
     plugin.start = function (options, restartPlugin) {
 
         app.debug('Plugin started');
-        squid.init(sendDelta, app.getSelfPath, log);
+        timerId = squid.init(sendDelta, app.getSelfPath, log);
 
         let localSubscription = {
             context: 'vessels.self',
@@ -51,6 +52,7 @@ module.exports = function (app) {
 
     plugin.stop = function () {
         unsubscribes.forEach(f => f());
+        if (timerId) clearInterval(timerId);
         unsubscribes = [];
         app.debug('Plugin stopped');
     };
@@ -149,7 +151,7 @@ module.exports = function (app) {
      * @param {Array<[{path:path, value:value}]>} messages 
      */
     function sendDelta(messages) {
-        app.handleMessage('openweather-signalk', {
+        app.handleMessage('squid-sailing-signalk', {
             updates: [
                 {
                     values: messages
@@ -159,7 +161,7 @@ module.exports = function (app) {
     }
 
     function sendMeta(units) {
-        app.handleMessage('openweather-signalk', {
+        app.handleMessage('squid-sailing-signalk', {
             updates: [
                 {
                     meta: units

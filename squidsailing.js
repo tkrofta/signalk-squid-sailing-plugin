@@ -1,5 +1,5 @@
 /*
-    Copyright © 2021 Inspired Technologies GmbH (www.inspiredtechnologies.eu)
+    Copyright © 2021 Thomas Krofta (github.com/tkrofta)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -194,8 +194,8 @@ function onPositionUpdate(value) {
                         response.data.forecast[0][latest.current.humidity.key]) : null
                     latest.current.pressure.value = latest.current.publish ?
                         (meta[latest.current.pressure.key].unit!==latest.current.pressure.unit ?
-                        convert.toSignalK(meta[latest.current.pressure.key].unit, response.data.forecast[0][latest.current.pressure.key]).value :
-                        response.data.forecast[0][latest.current.pressure.key]) : null
+                        convert.toStationAltitude(convert.toSignalK(meta[latest.current.pressure.key].unit, response.data.forecast[0][latest.current.pressure.key]).value, latest.altitude.elevation, latest.current.temperature.value) :
+                        convert.toStationAltitude(response.data.forecast[0][latest.current.pressure.key], latest.altitude.elevation, latest.current.temperature.value)) : null
                     latest.wind.speed.value = latest.wind.enabled ? 
                         (meta[latest.wind.speed.key].unit!==latest.wind.speed.unit ?
                         convert.toSignalK(meta[latest.wind.speed.key].unit, response.data.forecast[offset][latest.wind.speed.key]).value :
@@ -450,13 +450,15 @@ module.exports = {
         sendVal = msgHandler;
         log = logHandler;
         latest.update = null;
+        let timerId = null;
         if (refreshRate) {
-            setTimeout(() => {
+            timerId = setInterval(() => {
                 if (!lastUpdateWithin(refreshRate)) {
                     onPositionUpdate(getVal(navigationPosition).value);
                 }
             }, refreshRate)
             log(`Interval started, refresh rate ${refreshRate/60/1000}min`);
         }
+        return timerId;
     }
 }
