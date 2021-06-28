@@ -100,7 +100,7 @@ function toSignalK(units, value) {
         skUnits = "J/kg"
     } else if ( units === 'kg m-2 s-1' ) {
         value = value * 1.0
-        skUnits = "kg/s/qm"
+        skUnits = "mm/s"
     } else if ( units === 'unixdate' ) {
         value = new Date(value * 1000).toISOString()
         skUnits = ""

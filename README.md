@@ -3,7 +3,7 @@ SignalK Plugin to inject forecast data from __[Squid Sailing](https://www.squid-
 ## Install & Use
 *Note: To use this plugin you need to request an apikey, see also https://www.squid-sailing.com/doc-api/ to get started.*
 
-Install the plugin through the SignalK plugin interface. After installation you may want to 'Activate' it through the SignalK Plugin Config interfac, enter your pre-requested apikey and configure the output data you want to receive as new SignalK-values (`environment.forecast.*`), such as:
+Install the plugin through the SignalK plugin interface. After installation you may want to 'Activate' it through the SignalK Plugin Config interface, enter your pre-requested apikey and configure the output data you want to receive as new SignalK-values (`environment.forecast.*`), such as:
 - Wind at an elevation of 10m, includes wind gusts at groundlevel 
 - Temperature at an elevation of 2m
 - Pressure at mean sea level

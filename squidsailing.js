@@ -97,7 +97,7 @@ const latest = {
     },
     precipitation: {
         enabled: false,
-        rate : { value: null, unit: 'ratio', key: 'precipitationRate', description: 'Precipitation rate' },
+        rate : { value: null, unit: 'mm/s', key: 'precipitationRate', description: 'Precipitation rate' },
         accumulated : { value: null, unit: 'mm', key: 'accumulatedPrecipitation', description: 'Accumulated precipitation' },         
     },
     humidity: {
@@ -228,15 +228,15 @@ function onPositionUpdate(value) {
                         (meta[latest.clouds.cover.key].unit!==latest.clouds.cover.unit ?
                         convert.toSignalK(meta[latest.clouds.cover.key].unit, response.data.forecast[offset][latest.clouds.cover.key]).value :
                         response.data.forecast[offset][latest.clouds.cover.key]) : null
-                    latest.precipitation.rate.value = latest.precipitation.enabled ?
+                    latest.precipitation.rate.value = latest.precipitation.enabled && meta[latest.precipitation.rate.key] ?
                         (meta[latest.precipitation.rate.key].unit!==latest.precipitation.rate.unit ?
                         convert.toSignalK(meta[latest.precipitation.rate.key].unit, response.data.forecast[offset][latest.precipitation.rate.key]).value : 
                         response.data.forecast[offset][latest.precipitation.rate.key]) : null
-                    latest.precipitation.accumulated.value = latest.precipitation.enabled ? 
+                    latest.precipitation.accumulated.value = latest.precipitation.enabled && meta[latest.precipitation.accumulated.key] ? 
                         (meta[latest.precipitation.accumulated.key].unit!==latest.precipitation.accumulated.unit ?
                         convert.toSignalK(meta[latest.precipitation.accumulated.key].unit, response.data.forecast[offset][latest.precipitation.accumulated.key]).value : 
                         response.data.forecast[offset][latest.precipitation.accumulated.key]) : null
-                    latest.snow.cover.value = latest.snow.enabled ? 
+                    latest.snow.cover.value = latest.snow.enabled && meta[latest.snow.cover.key]? 
                         (meta[latest.snow.cover.key].unit!==latest.snow.cover.unit ? 
                         convert.toSignalK(meta[latest.snow.cover.key].unit, response.data.forecast[offset][latest.snow.cover.key]).value : 
                         response.data.forecast[offset][latest.snow.cover.key]) : null 
