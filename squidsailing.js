@@ -326,7 +326,7 @@ function prepareUpdate(type) {
         case 'meta': {
             output.forEach(o => update.push(buildDeltaUpdate(o.path, o.val.hasOwnProperty('unit') ? 
                 { units: o.val.unit, timeout: refreshRate / 1000, description: o.val.description } :
-                { timeout: reshRate / 1000, description: o.val.description }
+                { timeout: refreshRate / 1000, description: o.val.description }
              )));    
             break;
             }

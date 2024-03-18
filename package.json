@@ -1,6 +1,6 @@
 {
   "name": "squid-sailing-signalk",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "SignalK plugin to provide data from SquidSailing Service",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/tkrofta/signalk-squid-sailing-plugin#readme",
   "dependencies": {
-    "axios": "^0.21.4",
+    "axios": "^1.6.8",
     "debug": "^4.3.4"
   }
 }
